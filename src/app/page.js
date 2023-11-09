@@ -1,6 +1,5 @@
 'use client'
 
-
 import React, { useState } from 'react';
 
 export default function Home() {
@@ -29,6 +28,12 @@ export default function Home() {
     }
   };
 
+  const handleClear = () => {
+    setPrice('');
+    setSellingPrice('');
+    setDiscountPercentage(0);
+  };
+
   return (
     <div className="min-h-screen flex text-black bg-green-100">
       <div className="p-6 rounded-lg shadow-md bg-red-100 max-w-md">
@@ -47,9 +52,17 @@ export default function Home() {
           value={sellingPrice}
           onChange={handleSellingPriceChange}
         />
-        <h2 className="text-lg text-black font-semibold">
-          Discount in % : <span className='text-4xl'>{discountPercentage}%</span>
-        </h2>
+        <div className='flex items-center justify-between'>
+          <h2 className="text-lg text-black font-semibold">
+            Discount in % : <span className='text-4xl'>{discountPercentage}%</span>
+          </h2>
+          <button
+            className="bg-red-500 text-white font-semibold p-2 rounded-md mt-4"
+            onClick={handleClear}
+          >
+            Clear
+          </button>
+        </div>
       </div>
     </div>
   );
